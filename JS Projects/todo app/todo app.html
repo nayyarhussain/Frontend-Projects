@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+        }
+
+        main{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(225, 222, 255);
+        }
+
+        .todo{
+            padding: 10px;
+            border-radius: 5px;
+            background-color: white;
+            text-align: none;
+            width: 35vw;
+        }
+        .todo h1{
+            color: transparent;
+
+        }
+
+        .todo-box{
+            padding: 20px 0 ;
+        }
+        .todo-box li{
+            margin: 10px 0;
+        }
+
+        #text{
+            height: 45px ;
+            border: none;
+            border: 1px solid gainsboro;
+            border-radius: 50px;
+            outline: none;
+            width: 80%;
+            padding: 0 20px;
+        }
+
+        .btn{
+            background-color: rgb(41, 153, 244);
+            color: white;
+            font-size: 14px;
+            border: none;
+            padding: 10px;
+            border-radius: 20px;
+            height:45px;
+            width: 100px;
+        }
+        .inp-field{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <main>
+        <div class="todo">
+            <h1>ToDo App</h1>
+            <div class="inp-field">
+
+                <input type="text" name="" id="text"placeholder="Add Todo Text"><button class="btn">Add</button>
+            </div>
+            <div class="todo-box"></div>
+        </div>
+    </main>
+    <script>
+        const inpText = document.getElementById("text")
+        const addBtn = document.querySelector(".btn")
+        const addBox = document.querySelector(".todo-box")
+
+        addBtn.addEventListener("click",(e)=>{
+            let newChild = document.createElement("li")
+
+           
+          newChild.innerText=inpText.value;
+          console.log(newChild)
+        addBox.appendChild(newChild) 
+         inpText.value = ""
+         sItem()
+
+        })
+
+        let sItem = () => {
+            localStorage.setItem("ApiQuates", addBox.innerHTML);
+        }
+
+        let gItem = () => {
+            addBox.innerHTML = localStorage.getItem("ApiQuates")
+        }
+        gItem()
+
+    </script>
+</body>
+</html>

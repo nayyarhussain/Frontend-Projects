@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filter Image</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      main {
+        background-color: rgb(234, 247, 255);
+        height: 100%;
+        width: 100%;
+        padding: 20px 30px;
+      }
+
+      .main-item {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 1100px;
+        gap: 20px;
+        margin-top: 20px;
+        background-color: red;
+      }
+
+      .item {
+        width: 250px;
+        height: 200px;
+        background-color: white;
+        border-radius: 5px;
+      }
+      .hide {
+        display: none;
+      }
+
+      .main-btn button {
+        padding: 10px 13px;
+        border-radius: 4px;
+        border: none;
+        color: white;
+      }
+
+      .active {
+        background-color: rgb(0, 153, 255);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="main-btn">
+        <button data-name="all" class="all active">Show All</button>
+        <button data-name="phone" class="phone">Phones</button>
+        <button data-name="cloth" class="cloth">Clothes</button>
+        <button data-name="shoe" class="shoe">Shoe</button>
+      </div>
+      <div class="main-item">
+        <!-- phone items -->
+        <div data-name="phone" class="item hide">
+          <h1>Phone</h1>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+            perferendis.
+          </p>
+        </div>
+        <div data-name="phone" class="item hide">
+          <h1>Phone</h1>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+            perferendis.
+          </p>
+        </div>
+        <div data-name="phone" class="item hide">
+          <h1>Phone</h1>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+            perferendis.
+          </p>
+        </div>
+        <div data-name="phone" class="item hide">
+          <h1>Phone</h1>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+            perferendis.
+          </p>
+        </div>
+
+        <!-- clothe items -->
+        <div data-name="cloth" class="item hide">
+          <h1>Clothe</h1>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+            perferendis.
+          </p>
+        </div>
+        <div data-name="cloth" class="item hide">
+          <h1>Clothe</h1>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+            perferendis.
+          </p>
+        </div>
+        <div data-name="cloth" class="item hide">
+          <h1>Clothe</h1>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+            perferendis.
+          </p>
+        </div>
+        <div data-name="cloth" class="item hide">
+          <h1>Clothe</h1>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+            perferendis.
+          </p>
+        </div>
+
+        <!-- Shoe -->
+
+        <div data-name="shoe" class="item hide">
+          <h1>Shoe</h1>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+            perferendis.
+          </p>
+        </div>
+        <div data-name="shoe" class="item hide">
+          <h1>Shoe</h1>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+            perferendis.
+          </p>
+        </div>
+        <div data-name="shoe" class="item hide">
+          <h1>Shoe</h1>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+            perferendis.
+          </p>
+        </div>
+        <div data-name="shoe" class="item hide">
+          <h1>Shoe</h1>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+            perferendis.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      let mainBtn = document.querySelectorAll(".main-btn button");
+      let mainItem = document.querySelectorAll(".main-item .item");
+
+      const filterBtn = (e) => {
+        document.querySelector(".active").classList.remove("active");
+        e.target.classList.add("active");
+
+        //    foreach in card
+        
+        mainItem.forEach((item) => {
+            item.classList.add("hide")
+            if(item.dataset.name === e.target.dataset.name || e.target.dataset.name == "all"){
+                item.classList.remove("hide")
+            }
+        });
+      };
+
+      mainBtn.forEach((button) => button.addEventListener("click", filterBtn));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: 0;
+            font-family: "Roboto", sans-serif;
+        }
+        main{
+            height: 100vh;
+            width: 100%;
+            background-color: purple;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .quets-box{
+            
+           
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: white;
+
+
+        }
+
+        .quets{
+            width: 400px;
+        }
+
+        .quets-box h1{
+            margin: 20px 0;
+            font-size: 18px;
+        }
+        .quets-box.quets{
+            margin: 10px 0;
+            color: black;
+            font-size: 16px;
+            line-height: 25px;
+        }
+
+        .generator{
+            border: none;
+            background-color: purple;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 15px;
+            margin: 10px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <main>
+        <div class="quets-box">
+            <h1>Quates Generator</h1>
+            <blockquote class="quets"></blockquote>
+            <button class="generator">Generate Quates</button>
+        </div>
+    </main>
+
+    <script>
+        let queotsHtml = document.querySelector(".quets")
+        const apiUrl = "https://api.quotable.io/random";
+
+        async function queotsGenerator (url){
+            let responce = await fetch(url);
+            let data = await responce.json();
+            console.log(data)
+
+            queotsHtml.innerHTML=data.content;
+        }
+        queotsGenerator(apiUrl)
+
+        document.querySelector(".generator").addEventListener("click",()=>{
+            queotsGenerator(apiUrl)
+           
+        })
+    </script>
+</body>
+</html>
